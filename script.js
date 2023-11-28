@@ -1,7 +1,7 @@
 import { updateGround, setupGround } from './ground.js'
 
 const WORLD_WIDTH = 100
-const WORLD_HEIGHT = 50
+const WORLD_HEIGHT = 30
 
 
 const worldElem = document.querySelector('[data-world]')
@@ -18,7 +18,7 @@ function update(time) {
     }
     const delta = time - lastTime
 
-    updateGround(delta)
+    updateGround(delta, 1)
 
     lastTime = time
     window.requestAnimationFrame(update)
@@ -38,4 +38,3 @@ function setPixelToWorldScale() {
     worldElem.style.height = `${WORLD_HEIGHT * worldToPixelScale}px`
 }
 
-setupGround()
