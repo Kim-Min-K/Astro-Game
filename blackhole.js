@@ -28,6 +28,12 @@ export function updateBlackHole(delta, speedIncreaser) {
     nextBHTime -= delta
 }
 
+export function getBHRects() {
+    return [...document.querySelectorAll("[data-blackhole]")].map(cactus => {
+        return blackhole.getBoundingClientRect()
+    })
+}
+
 function createBH() {
     const blackhole = document.createElement("img")
     blackhole.dataset.blackhole = true
