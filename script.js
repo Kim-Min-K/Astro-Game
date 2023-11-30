@@ -1,4 +1,6 @@
 import { updateGround, setupGround } from './ground.js'
+import { updateDino, setupDino } from './dino.js'
+import { updateBlackHole, setupBlackHole } from './blackhole.js'
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -26,6 +28,8 @@ function update(time) {
     const delta = time - lastTime
 
     updateGround(delta, speedIncreaser)
+    updateDino(delta, speedIncreaser)
+    updateBlackHole(delta, speedIncreaser)
     updateSpeedIncreaser(delta)
     updateScore(delta)
 
@@ -41,6 +45,8 @@ function handleStart() {
     speedIncreaser = 1
     score = 0
     setupGround()
+    setupDino()
+    setupBlackHole()
     startScreenElem.classList.add("hide")
     window.requestAnimationFrame(update)
 }
