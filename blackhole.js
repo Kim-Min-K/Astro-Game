@@ -29,7 +29,7 @@ export function updateBlackHole(delta, speedIncreaser) {
 }
 
 export function getBHRects() {
-    return [...document.querySelectorAll("[data-blackhole]")].map(cactus => {
+    return [...document.querySelectorAll("[data-blackhole]")].map(blackhole => {
         return blackhole.getBoundingClientRect()
     })
 }

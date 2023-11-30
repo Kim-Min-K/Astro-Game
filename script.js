@@ -1,6 +1,6 @@
 import { updateGround, setupGround } from './ground.js'
-import { updateDino, setupDino } from './dino.js'
-import { updateBlackHole, setupBlackHole } from './blackhole.js'
+import { updateDino, setupDino, getDinoRect, setDinoLose } from './dino.js'
+import { updateBlackHole, setupBlackHole, getBHRects } from './blackhole.js'
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -32,9 +32,24 @@ function update(time) {
     updateBlackHole(delta, speedIncreaser)
     updateSpeedIncreaser(delta)
     updateScore(delta)
+    if (checkLose()) return handleLose()
 
     lastTime = time
     window.requestAnimationFrame(update)
+}
+
+function checkLose() {
+    const dinoRect = getDinoRect()
+    return getBHRects().some(rect => isCollision(rect, dinoRect))
+}
+
+function isCollision(rect1, rect2) {
+    return (
+        rect1.left < rect2.right &&
+        rect1.top < rect2.bottom &&
+        rect1.right > rect2.left &&
+        rect1.bottom > rect2.top
+    )
 }
 
 function updateSpeedIncreaser(delta) {
@@ -69,3 +84,10 @@ function setPixelToWorldScale() {
     worldElem.style.height = `${WORLD_HEIGHT * worldToPixelScale}px`
 }
 
+function handleLose() {
+    setDinoLose()
+    setTimeout(() => {
+        document.addEventListener("keydown", handleStart, { once: true })
+        startScreenElem.classList.remove("hide")
+    }, 100)
+}
