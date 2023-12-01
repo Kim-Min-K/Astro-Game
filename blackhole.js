@@ -5,7 +5,7 @@ const BH_INTERVAL_MIN = 500
 const BH_INTERVAL_MAX = 2000
 const worldElem = document.querySelector("[data-world]")
 
-
+let time = 10000000
 let nextBHTime
 let bhrandom = 0
 export function setupBlackHole() {
@@ -45,11 +45,15 @@ function createBH(bhrandom) {
     } else {
         blackhole.src = "imgs/blackhole2.png"
     }
+    sleep(time)
     blackhole.classList.add("blackhole")
     setCustomProperty(blackhole, "--left", 100)
     worldElem.append(blackhole)
 }
 
+function sleep(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
 
 
 function randomNumber(min, max) {
