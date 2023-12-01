@@ -10,6 +10,7 @@ const SPEED_INCREASER = 0.0001
 const worldElem = document.querySelector('[data-world]')
 const distanceScoreElem = document.querySelector('[data-distance-score]')
 const startScreenElem = document.querySelector('[data-start-screen]')
+const startScreenElem2 = document.querySelector('[data-start-screen2]')
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
@@ -63,6 +64,7 @@ function handleStart() {
     setupDino()
     setupBlackHole()
     startScreenElem.classList.add("hide")
+    startScreenElem2.classList.add("hide")
     window.requestAnimationFrame(update)
 }
 

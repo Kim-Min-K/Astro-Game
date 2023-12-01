@@ -1,8 +1,8 @@
 import { getCustomProperty, incrementCustomProperty, setCustomProperty } from "./updateCustomProperty.js"
 
-const SPEED = 0.05
+const SPEED = 0.04
 const BH_INTERVAL_MIN = 1000
-const BH_INTERVAL_MAX = 10000
+const BH_INTERVAL_MAX = 5000
 const worldElem = document.querySelector("[data-world]")
 
 let time = 10000000
@@ -17,7 +17,7 @@ export function setupBlackHole() {
 
 export function updateBlackHole(delta, speedIncreaser) {
     document.querySelectorAll("[data-blackhole]").forEach(blackhole => {
-        incrementCustomProperty(blackhole, "--left", delta * speedIncreaser * SPEED * -1)
+        incrementCustomProperty(blackhole, "--left", delta * speedIncreaser * SPEED * -.9)
         if (getCustomProperty(blackhole, "--left") <= -100) {
             blackhole.remove()
         }

@@ -27,6 +27,16 @@ body {
     top: 1vmin;
 }
 
+.start-screen-inst {
+    color: antiquewhite;
+    position: absolute;
+    font-size: 2vmin;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+
+}
+
 .start-screen {
     color: antiquewhite;
     position: absolute;
