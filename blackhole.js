@@ -1,8 +1,8 @@
 import { getCustomProperty, incrementCustomProperty, setCustomProperty } from "./updateCustomProperty.js"
 
 const SPEED = 0.05
-const BH_INTERVAL_MIN = 500
-const BH_INTERVAL_MAX = 2000
+const BH_INTERVAL_MIN = 1000
+const BH_INTERVAL_MAX = 10000
 const worldElem = document.querySelector("[data-world]")
 
 let time = 10000000
