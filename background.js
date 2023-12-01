@@ -4,7 +4,7 @@ import {
     setCustomProperty,
 } from "./updateCustomProperty.js"
 
-const SPEED = 0.05
+const SPEED = 0.01
 const skyElems = document.querySelectorAll("[data-sky]")
 
 export function setupSky() {

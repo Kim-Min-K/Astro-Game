@@ -5,7 +5,9 @@ const BH_INTERVAL_MIN = 500
 const BH_INTERVAL_MAX = 2000
 const worldElem = document.querySelector("[data-world]")
 
+
 let nextBHTime
+let bhrandom = 0
 export function setupBlackHole() {
     nextBHTime = BH_INTERVAL_MIN
     document.querySelectorAll("[data-blackhole]").forEach(blackhole => {
@@ -22,7 +24,8 @@ export function updateBlackHole(delta, speedIncreaser) {
     })
 
     if (nextBHTime <= 0) {
-        createBH()
+        bhrandom = Math.floor(Math.random() * 2)
+        createBH(bhrandom)
         nextBHTime = randomNumber(BH_INTERVAL_MIN, BH_INTERVAL_MAX) / speedIncreaser
     }
     nextBHTime -= delta
@@ -34,14 +37,20 @@ export function getBHRects() {
     })
 }
 
-function createBH() {
+function createBH(bhrandom) {
     const blackhole = document.createElement("img")
     blackhole.dataset.blackhole = true
-    blackhole.src = "imgs/blackhole.png"
+    if (bhrandom == 1) {
+        blackhole.src = "imgs/blackhole.png"
+    } else {
+        blackhole.src = "imgs/blackhole2.png"
+    }
     blackhole.classList.add("blackhole")
     setCustomProperty(blackhole, "--left", 100)
     worldElem.append(blackhole)
 }
+
+
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
